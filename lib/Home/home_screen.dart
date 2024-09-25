@@ -1,19 +1,23 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_website/menu/menu_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+  HomeScreen({super.key});
+  List<String> list = [
+    'assets/images/banner/banner_1.png',
+    'assets/images/banner/banner_2.png',
+    'assets/images/banner/banner_3.png',
+    'assets/images/banner/banner_4.png',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(
-              16.0), 
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment
-                .start, 
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -33,10 +37,8 @@ class HomeScreen extends StatelessWidget {
                         width: 250,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(30.0),
-                          border: Border.all(
-                              color: Colors.grey[300]!),
+                          borderRadius: BorderRadius.circular(30.0),
+                          border: Border.all(color: Colors.grey[300]!),
                           boxShadow: const [
                             BoxShadow(
                               color: Colors.black12,
@@ -85,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         width: 10,
                       ),
-                     const Text(
+                      const Text(
                         'Sign up',
                         style: TextStyle(
                           fontSize: 20,
@@ -96,26 +98,74 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 10),
               Row(
                 children: [
-                  MenuItems(title: 'Home', press: (){}),
-                  MenuItems(title: 'Category', press: (){}),
-                  MenuItems(title: 'About', press: (){}),
-                  MenuItems(title: 'Contact', press: (){}),
+                  MenuItems(title: 'Home', press: () {}),
+                  MenuItems(title: 'Category', press: () {}),
+                  MenuItems(title: 'About', press: () {}),
+                  MenuItems(title: 'Contact', press: () {}),
                   const Spacer(),
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.favorite)),
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.message)),
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.production_quantity_limits_sharp)),
+                  IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.favorite)),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.message)),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.production_quantity_limits_sharp)),
                 ],
               ),
+              const SizedBox(height: 10),
+              CarouselSlider(
+                options: CarouselOptions(
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  viewportFraction: 0.5,
+                  aspectRatio: 4.0,
+                  initialPage: 1,
+                ),
+                items: list
+                    .map(
+                      (item) => Container(
+                        width: double.infinity,
+                        height: 300,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Image.asset(item.toString()),
+                      ),
+                    )
+                    .toList(),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'Category',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey.shade400,
+                ),
+              ),
+               const SizedBox(height: 10),
               Container(
                 width: double.infinity,
-                height: 350,
+                height: 100,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.red
+                  borderRadius: BorderRadius.circular(20),
+                 color: Colors.green,
                 ),
-              )
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.watch,size: 50,),),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.phone,size: 50,),),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.watch,size: 50,),),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.watch,size: 50,),),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.watch,size: 50,),),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.watch,size: 50,),),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

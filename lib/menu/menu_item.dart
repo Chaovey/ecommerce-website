@@ -5,11 +5,10 @@ class MenuItems extends StatefulWidget {
   final VoidCallback press;
   final bool isActive;
   const MenuItems(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.press,
-      this.isActive = false})
-      : super(key: key);
+      this.isActive = false});
 
   @override
   _MenuItemsState createState() => _MenuItemsState();
@@ -35,9 +34,9 @@ class _MenuItemsState extends State<MenuItems> {
               border: Border(
                   bottom: BorderSide(
                       color: widget.isActive == true
-                          ? Colors.blue
+                          ? Colors.green
                           : isHover
-                              ? Colors.blue
+                              ? Colors.green
                               : Colors.transparent,
                       width: 4))),
           child: Text(
@@ -50,9 +49,9 @@ class _MenuItemsState extends State<MenuItems> {
                       : FontWeight.normal,
               fontSize: _size.width >= 370 ? 18 : 14,
               color: widget.isActive == true
-                  ? Colors.blue
+                  ? Colors.green
                   : isHover
-                      ? Colors.blue
+                      ? Colors.green
                       : Colors.black,
             ),
           ),
